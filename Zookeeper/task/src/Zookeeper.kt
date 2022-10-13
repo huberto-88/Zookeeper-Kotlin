@@ -113,15 +113,22 @@ const val rabbit = """Switching on the camera in the rabbit habitat...
 (" ~----( ~   Y.  )
 It looks like we will soon have more rabbits!"""
 
-fun main() {
-    val animals = listOf<String>(camel, lion, deer, goose, bat, rabbit)
-    println("Please enter the number of the habitat you would like to view:")
-    val choice = readln().toInt()
+val animals = arrayOf(camel, lion, deer, goose, bat, rabbit)
 
-    try {
-        println(animals[choice])
-    } catch (e: StringIndexOutOfBoundsException) {
-        println("We don't have animal assigned to this number :(")
+fun main() {
+    while (true) {
+        println("Please enter the number of the habitat you would like to view:")
+        val choice = readln()
+
+        if (choice == "exit") {
+            break
+        }
+
+        try {
+            println(animals[choice.toInt()])
+        } catch (e: StringIndexOutOfBoundsException) {
+            println("We don't have animal assigned to this number :(")
+        }
     }
-    println("---\nYou've reached the end of the program. To check another habitat, please restart the watcher.")
+    println("See you later!")
 }
